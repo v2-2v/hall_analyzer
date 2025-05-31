@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{hoge}} 総差枚</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh; /* ビューポート全体の高さに合わせる */
+            display: flex;
+            flex-direction: column;
+        }
+        #calendar {
+            flex-grow: 1; /* カレンダーが残りのスペースを占めるように */
+            height: 100%;  /* カレンダーが縦いっぱいになる */
+        }
+    </style>
+</head>
+<body>
+    <h1>{{hoge}}総差枚 {{daisuu}}</h1>
+    <p><a href=/yamichan>機種一覧に戻る</a></p>
+    <p><a href="/d/{{ hoge }}">台別の差枚</a>
+    <a href="/graph?kishu={{ hoge }}">グラフ</a>
+    <a href="/daidataadd?kishu={{ hoge }}">データ入力する</a></p>
+    <div id='calendar'></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: '/events/{{hoge}}'
+            });
+        
+            calendar.render();
+        });
+
+        
+    </script>
+</body>
+</html>

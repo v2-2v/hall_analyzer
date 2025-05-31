@@ -1,4 +1,4 @@
-#スクレイピングスタート用プログラム。常時起動推奨 完成済み
+#スクレイピングスタート用プログラム
 from datetime import datetime, timedelta
 import time
 import requests
@@ -7,10 +7,14 @@ from datetime import datetime
 import func
 import makegraph
 import json
-webhook_url = 'https://discord.com/api/webhooks/1333490037068922971/cWLD4ZEqJP2pR11oK2CRUgpKoFXMj68DAWejYlyEn79YY-MQvggFh4mwVdRPUrxqatfu'
-himitu_url="https://discord.com/api/webhooks/1336296441328439316/s74F9QVZ3EkgD1wbPSBMMA8xZKiVbnOhm0jF7ROvbmQK3hC1hL7Hnjm5Rdn4n9VwlPH4"
-url = "https://www.slorepo.com/hole/e3839ee383abe3838fe383b3e58e9ae69ca8e58c97e5ba97code/"
+webhook_url = 'ADMIN_DISCORD_URL'
+himitu_url="NOTIFY_DISCORD_URL"
+url = "YOUR_HALL_URL"
+"""
+EXAM: https://www.slorepo.com/hole/e382a8e382b9e38391e382b9e697a5e68b93e7a78be89189e58e9fe9a785e5898de5ba97code/
 
+from slorepo
+"""
 
 def start():
     headers = {

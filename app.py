@@ -17,16 +17,16 @@ while current_date <= end_date:
     current_date += timedelta(days=1)
 
 app = Flask(__name__)
-app.secret_key = '0401'  # セッション用の秘密鍵
+app.secret_key = 'YOUR_SECRET_KEY'  # セッション用の秘密鍵
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"  # ログインしていない場合にリダイレクトするページ
 
-webhook_url = 'https://discord.com/api/webhooks/1333490037068922971/cWLD4ZEqJP2pR11oK2CRUgpKoFXMj68DAWejYlyEn79YY-MQvggFh4mwVdRPUrxqatfu'
+webhook_url = 'YOUR_WEBHOOK_URL'
 
 # ユーザーデータの設定（仮のデータ）
-users = {'admin': {'password': '0000'}}
+users = {'admin': {'password': '0000'}} #EXAM
 
 # ユーザークラス
 class User(UserMixin):

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name | safe }} 台別の差枚</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        .green-cell {
+        background-color: rgb(45, 199, 226);
+        }
+        .red-cell {
+        background-color: rgb(224, 79, 79);
+        }
+        .gold-cell {
+        background-color: rgb(255, 200, 18);
+        }
+        .rain-cell {
+        background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+        }
+        .o5000-cell {
+            background-color: rgb(78, 221, 43);
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ name | safe }} 台別の差枚 日付クリックでグラフ</h1>
+    <p><a href=/mikoto>機種一覧に戻る</a>
+    <p><a href="/c/{{ name | safe }}">総差枚</a>
+    <a href="/graph?kishu={{ name | safe }}">グラフ</a>
+    <a href="/daidataadd?kishu={{ name | safe }}">データ入力する</a></p>
+    <table>
+        <tbody>
+            {% for row in head %}
+                <tr>
+                    {% for cell in row %}
+                        <td>
+                            {{ cell }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            {% for row in data %}
+                <tr>
+                    {% for cell in row %}
+                        <td class="{% if cell|int > 10000 %}rain-cell{% elif cell|int > 5000 %}o5000-cell{% elif cell|int > 2000 %}gold-cell{% elif cell|int > 0 %}green-cell{% elif cell|int < 0 %}red-cell{% else %}{% endif %}">
+                            {{ cell | safe }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
